@@ -1,0 +1,26 @@
+li{
+    list-style: none;
+    padding: 5px;    
+    margin-left: 5px;
+    transition: all 0.2s;    
+    font-size: 18px #ffffff;
+    border-bottom: 2px solid transparent ;
+    
+}
+
+li:hover{    
+    border-bottom: 2px solid #ffffff;
+    background-color: #433A58;
+}
+
+
+.li-active{
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ffffff;
+}
+
+li a{
+    color: #ffffff;
+    text-decoration: none;
+    
+}

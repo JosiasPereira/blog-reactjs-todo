@@ -1,0 +1,10 @@
+.container-home{
+    display: flex;
+    flex-direction: row;
+    
+}
+div{
+    font-size: 22px;
+    color: #ffffff;
+    
+}
