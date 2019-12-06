@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Formik, Field, Form } from 'formik';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -10,57 +11,24 @@ import Button from '../../components/Button';
 
 import * as Yup from 'yup';
 
+
+
+const LoginSchema = Yup.object().shape({
+  email: Yup.string()
+    .required('O e-mail é obrigatório')
+    .email('E-mail inválido'),
+    
+  password: Yup.string()
+    .required('A senha é obrigatória')
+    .min(8, 'Muito curto'),
+});
+
 class Login extends Component {
-  
-  state={
-    a:false,
-    error:false,
-    email:'',
-    password:''
-  }
 
+  handleSubmit = (values, formikHelpers)=> {
+    
+    console.log(values)
   
-  componentDidMount=()=>{
-    setTimeout(()=>{
-      this.setState({a:true})
-    },1000);
-  
-    setTimeout(()=>{
-      this.setState({a:false})
-    },2000);
-
-    
-  }
-  
-  handleSubmit = (event)=> {
-    
-    
-
-    const LoginSchema = Yup.object().shape({
-      email: Yup.string()
-        .email('E-mail inválido')
-        .required('O e-mail é obrigatório'),
-      password: Yup.string()
-        .required('A senha é obrigatória')
-        .min(8, 'Muito curto'),
-    });
-
-    const {email, password} = this.state;
-    const data={
-      email,
-      password
-    }
-    
-    LoginSchema.validate(data,{recursive:true})
-      .catch((error)=>{
-        console.log(error.errors)
-      })
-      .then(valid=>{
-        console.log(valid)
-      })
-    console.log('sfsd')
-      event.preventDefault();
-    
   }
 
 
@@ -71,44 +39,46 @@ class Login extends Component {
 
   render() {
 
-    
-
-
     return (
-        <form onSubmit={this.handleSubmit}>
+        <Formik  
+            onSubmit={this.handleSubmit}
+            initialValues={{            
+              email: '',
+              password: '',              
+            }}
+            validationSchema={LoginSchema}          
+          >
           
           <div className="form-wrapper">
             <div className="form-title">
               ACESSE SUA CONTA
             </div>
-            <Input
-              placeholder="Digite seu email..."
-              textError="email inválido"
-              error={this.state.error}
-              name="email"
-              onChange={this.handleChange('email')}
-            >
-            </Input>
-            <Input
-              placeholder="Digite sua senha..."
-              textError="senha errada"
-              type="password"
-              name="password"
-              error={this.state.error}  
-              onChange={this.handleChange('password')}            
-            >
-            </Input>
-            <Button
-              type="submit"
-              
-            >
-              Entrar
-            </Button>
-            {this.state.email}
-            {this.state.password}
+            <Form>              
+              <Field
+                placeholder="Digite seu email..."
+                name="email"              
+                component={Input}           
+              >
+              </Field>
+              <Field              
+                placeholder="Digite sua senha..."
+                textError="senha errada"
+                type="password"
+                name="password"
+                component={Input}                     
+              >
+              </Field>
+              <Button
+                type="submit"
+                
+              >
+                Entrar
+              </Button>
+            </Form>
+            
          </div>
          
-        </form>
+        </Formik>
         
     );
   }

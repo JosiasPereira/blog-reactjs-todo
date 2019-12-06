@@ -5,15 +5,15 @@ import { Container } from './styles.css';
 export default class Input extends Component {
 
     render() {
-        const { textError,error, ...props } = this.props;    
+        const { field, form: { touched, errors },textError,error, ...props } = this.props;    
         
     return (
         <>
-            <input {...props}              
+            <input {...field} {...props}             
             >
             </input>
-            <div className={'input-error'+ (error ? ' input-error-visible': '')}>
-                {textError}
+            <div className={'input-error'+ (errors[field.name] && touched[field.name] ? ' input-error-visible': '')}>
+                {errors[field.name]}
             </div>
         </>
     );

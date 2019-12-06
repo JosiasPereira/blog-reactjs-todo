@@ -16,6 +16,9 @@ export const Navitens = ({clicked}) =>{
             <Navitem link="/login">
                 Entrar
             </Navitem>
+            <Navitem link="/signup">
+                Cadastrar-se
+            </Navitem>
         </ul>
     );
 return <nav>{links}</nav>
