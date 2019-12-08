@@ -1,17 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {App} from './components/App';
+import App from './components/App';
 import store from './store';
+import {rrfProps } from './store';
 import { Provider } from 'react-redux';
+import {ReactReduxFirebaseProvider} from 'react-redux-firebase'
 import { BrowserRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux'
+import { isLoaded } from 'react-redux-firebase'
+import Loading from './components/Loading';
+
+function AuthIsLoaded({ children }) {
+    const auth = useSelector(state => state.firebase.auth)
+    if (!isLoaded(auth)) return <Loading/>;
+    return children
+  }
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <ReactReduxFirebaseProvider {...rrfProps}>
+            <BrowserRouter>
+                <AuthIsLoaded>                    
+                    <App/>
+                    
+                </AuthIsLoaded>
+            </BrowserRouter>
+        </ReactReduxFirebaseProvider>
+        
         
     </Provider>
     , 
     document.getElementById('root'));
+
+
+

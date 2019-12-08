@@ -4,10 +4,15 @@ import React, { Component } from 'react';
 
 export default class Button extends Component {
   render() {
-      const {children,...props} = this.props;
+      const {children, loading,...props} = this.props;
     return (
         <>
-            <button {...props}>
+            <button 
+              className={loading ? 'button-loading':''} 
+              {...props}
+              disabled={loading}
+            >
+                <div ></div>
                 {children}
             </button>
         </>

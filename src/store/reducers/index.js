@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
+import { firebaseReducer } from 'react-redux-firebase';
+import { firestoreReducer } from 'redux-firestore';
 
-//import PerguntaReducer  from './pergunta/PerguntaReducer';
+import auth  from './authReducer';
 
 
 
 export const Reducers = combineReducers({
-//    pergunta              : PerguntaReducer,
+    auth : auth,
+    firebase: firebaseReducer,
+    firestore: firestoreReducer,
 
 });

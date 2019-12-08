@@ -8,8 +8,9 @@ import { Container } from './styles.css';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-
+import * as actions from '../../store/actions';
 import * as Yup from 'yup';
+
 
 
 
@@ -25,8 +26,9 @@ const LoginSchema = Yup.object().shape({
 
 class Login extends Component {
 
-  handleSubmit = (values, formikHelpers)=> {
-    
+  handleSubmit = async (values, formikHelpers)=> {
+  
+    await this.props.login(values);
     console.log(values)
   
   }
@@ -38,7 +40,7 @@ class Login extends Component {
   };
 
   render() {
-
+    const {loading} = this.props;
     return (
         <Formik  
             onSubmit={this.handleSubmit}
@@ -47,8 +49,7 @@ class Login extends Component {
               password: '',              
             }}
             validationSchema={LoginSchema}          
-          >
-          
+          >          
           <div className="form-wrapper">
             <div className="form-title">
               ACESSE SUA CONTA
@@ -57,7 +58,8 @@ class Login extends Component {
               <Field
                 placeholder="Digite seu email..."
                 name="email"              
-                component={Input}           
+                component={Input} 
+                autoComplete="off"          
               >
               </Field>
               <Field              
@@ -70,10 +72,11 @@ class Login extends Component {
               </Field>
               <Button
                 type="submit"
-                
+                loading={loading}
               >
                 Entrar
               </Button>
+              {this.props.error}
             </Form>
             
          </div>
@@ -84,12 +87,16 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  error: state.auth.error,
+  loading: state.auth.loading
+});
 
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators(Actions, dispatch);
+const mapDispatchToProps = {
+  login     : actions.login
+};
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps
+  mapDispatchToProps
 )(Login);

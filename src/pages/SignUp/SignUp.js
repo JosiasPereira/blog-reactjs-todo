@@ -4,6 +4,7 @@ import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import * as actions from '../../store/actions';
 
 import { Container } from './styles.css';
 
@@ -29,84 +30,93 @@ const SignUpSchema = Yup.object().shape({
 class SignUp extends Component {
 
 
-    handleSubmit = (values, formikHelpers)=> {
+  handleSubmit = async (values, formikHelpers)=> {
 
-        console.log(values)
-        
-        }
+    
+    await this.props.createUser(values);
+    console.log(values)
+      
+  }
 
 
-        handleChange = name => event => {
-        this.setState({[name]: event.target.value})
-        
-        };
+  handleChange = name => event => {
+  this.setState({[name]: event.target.value})
+  
+  };
 
-        render() {
+  render() {
 
-        return (
-            <Formik  
-                onSubmit={this.handleSubmit}
-                initialValues={{
-                    name:'',
-                    email: '',
-                    password: '',
-                    confirmPassword:''
-                }}
-                validationSchema={SignUpSchema}          
-                >
-                
-                <div className="form-wrapper">
-                <div className="form-title">
-                    FAÇA SEU CADASTRO
-                </div>
-                <Form>
-                    <Field
-                    placeholder="Digite seu nome..."
-                    name="name"                          
-                    component={Input}           
-                    >
-                    </Field>
-                    <Field
-                    placeholder="Digite seu email..."                
-                    name="email"               
-                    component={Input}           
-                    >
-                    </Field>
+  return (
+      <Formik  
+          onSubmit={this.handleSubmit}
+          initialValues={{
+              name:'',
+              email: '',
+              password: '',
+              confirmPassword:''
+          }}
+          validationSchema={SignUpSchema}          
+          >
+          
+          <div className="form-wrapper">
+          <div className="form-title">
+              FAÇA SEU CADASTRO
+          </div>
+          <Form>
+              <Field
+              autoComplete="off"
+              placeholder="Digite seu nome..."
+              name="name"                          
+              component={Input}           
+              >
+              </Field>
+              <Field
+              placeholder="Digite seu email..."                
+              name="email"               
+              component={Input}           
+              >
+              </Field>
 
-                    <Field              
-                    placeholder="Digite sua senha..."
-                    type="password"
-                    name="password"
-                    component={Input}        
-                    >
-                    </Field>
-                    <Field              
-                    placeholder="Confirme sua senha..."
-                    type="password"
-                    name="confirmPassword"
-                    component={Input}        
-                    >
-                    </Field>
-                    <Button
-                    type="submit"
-                    
-                    >
-                    Cadastrar-se
-                    </Button>
-                </Form>
-                
-                </div>
-                
-            </Formik>
-            
-        );
-    }
+              <Field              
+              placeholder="Digite sua senha..."
+              type="password"
+              name="password"
+              component={Input}        
+              >
+              </Field>
+              <Field              
+              placeholder="Confirme sua senha..."
+              type="password"
+              name="confirmPassword"
+              component={Input}        
+              >
+              </Field>
+              <Button
+                type="submit"
+                loading={this.props.loading}
+              >
+              Cadastrar-se
+              </Button>
+          </Form>
+          
+          </div>
+          
+      </Formik>
+      
+  );
+  }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = store => ({
+  loading : store.auth.loading
+});
 
+const mapDispatchToProps = {
+    createUser : actions.signUp,
+    logOut     : actions.signOut
+};
 
 export default connect(
   mapStateToProps,
-  // mapDispatchToProps
+  mapDispatchToProps
 )(SignUp);

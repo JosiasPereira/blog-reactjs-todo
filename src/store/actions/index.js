@@ -1,4 +1,4 @@
-//export {signUp} from './authActions';
+export * from './authActions';
   
 //export { addTodo} from './todoActions.js';
   

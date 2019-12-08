@@ -11,8 +11,21 @@ button{
 
 }
 
-button:hover{
+button:hover:enabled{
     border: .5px solid #6C6AAD;
     transition: all .2s;
-   
+    cursor: pointer;
+}
+
+button:active{
+    border: .5px solid #433A58;
+    background-color: #6C6AAD;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.button-loading{
+    cursor: not-allowed;
+
+
 }
