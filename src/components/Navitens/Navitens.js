@@ -5,19 +5,20 @@ import { Container } from './styles.css';
 
 export const Navitens = ({clicked,loggedIn}) =>{
     let links;
+    
     if (loggedIn){
         links =(
-            <ul>
-                <Navitem  link="/">
+            <ul className="ul-menu">
+                <Navitem clicked={clicked} className="link" link="/">
                     Home
                 </Navitem>
-                <Navitem link="/sair">
+                <Navitem clicked={clicked} link="/logout">
                     Sair
                 </Navitem>
-                <Navitem link="/todos">
+                <Navitem clicked={clicked} link="/todos">
                     To do
                 </Navitem>
-                <Navitem link="/profile">
+                <Navitem clicked={clicked} link="/profile">
                     Perfil
                 </Navitem>
                 
@@ -25,19 +26,20 @@ export const Navitens = ({clicked,loggedIn}) =>{
         );
     }else{
         links =(
-            <ul>
-                <Navitem  link="/">
+            <ul className="ul-menu">
+                <Navitem clicked={clicked} link="/">
                     Home
                 </Navitem>                
-                <Navitem link="/login">
+                <Navitem clicked={clicked} link="/login">
                     Entrar
                 </Navitem>
-                <Navitem link="/signup">
+                <Navitem clicked={clicked} link="/signup">
                     Cadastrar-se
                 </Navitem>
             </ul>
         );
     };
+
 
     
     

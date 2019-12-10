@@ -1,4 +1,4 @@
-li{
+.li{
     list-style: none;
     padding: 5px;    
     margin-left: 5px;
@@ -8,7 +8,7 @@ li{
     
 }
 
-li:hover{    
+.li:hover{    
     border-bottom: 2px solid #ffffff;
     background-color: #433A58;
 }
@@ -19,9 +19,30 @@ li:hover{
     border-bottom: 2px solid #ffffff;
 }
 
-li a{
+.li a{
     color: #ffffff;
     text-decoration: none;
     font-size: 22px;
     
+}
+
+@media (max-width: 600px){
+    
+    .li{
+        min-width: 600px;        
+        margin-left: 0px;
+        display: inline-block;
+    }
+    .li a{
+        display: block;
+    } 
+    
+    .link:hover{        
+        border-bottom: 2px solid #ffffff;
+    }
+
+    .li:hover{    
+        border-bottom: 2px solid transparent;
+        background-color: #433A58;        
+    }
 }

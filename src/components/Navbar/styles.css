@@ -1,9 +1,13 @@
 .header{
+    box-sizing: border-box;
     width: 100%;
     height: 80px;
     background-color: #2C2C33;
     display: flex;
     justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: all 0.2s;
 }
 .content-header{
     display: flex;
@@ -32,4 +36,49 @@
 
 .logo h2{
     margin-left: 10px;
+}
+
+.menulogo-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    display: none;
+}
+.menulogo{
+    width: 38px;
+    height: 38px;
+    color: #ffffff;
+}
+.menulogo:hover{
+    cursor: pointer;
+}
+
+.show-menu{
+    
+    display: flex; 
+    position: fixed;
+    background-color: #2C2C33;
+    padding: 0px 10px;
+    z-index: 10;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    
+    
+    
+}
+.hide-menu{
+    display: none; 
+    transition: all .2s;
+}
+
+@media (max-width: 600px){
+    .menu-itens-container-web{
+        display: none;
+    }
+    .menulogo-container{
+        display: flex;
+    }
 }

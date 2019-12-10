@@ -2,12 +2,13 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 import { Container } from './styles.css';
 
-export const Navitem = ({link, children}) => {
+export const Navitem = ({link, children, clicked}) => {
     return(
-        <li>
-            <NavLink
+        <li className="li">
+            <NavLink className="link"
                 to={link}
-                exact                
+                exact     
+                onClick={clicked}           
                 activeClassName="li-active"
                 
             >

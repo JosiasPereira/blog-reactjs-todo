@@ -1,23 +1,22 @@
-button{
+.button{
     width: 100%;
     font-size: 15px;
     border-radius: 5px;
     border: 0.5px solid transparent;        
-    padding: 8px 8px;
+    
     color: #ffffff;  
     background-color: #433A58;
     height: 40px;
     font-weight: bold;
-
 }
 
-button:hover:enabled{
+.button:hover:enabled{
     border: .5px solid #6C6AAD;
     transition: all .2s;
     cursor: pointer;
 }
 
-button:active{
+.button:active{
     border: .5px solid #433A58;
     background-color: #6C6AAD;
     transition: all .2s;

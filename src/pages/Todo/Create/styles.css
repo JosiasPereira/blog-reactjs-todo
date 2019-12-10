@@ -1,0 +1,19 @@
+.container-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.button-cancel{
+    background-color: rgb(105, 105, 110);
+    margin-right: 50px;
+}
+
+@media (max-width: 500px){
+    .button-cancel{
+        background-color: rgb(105, 105, 110);
+        margin-right: 10px;
+    }
+    
+}

@@ -1,6 +1,7 @@
 import * as actions from './actionsType';
 import firebase from './../../Firebase';
 import history from '../../history';
+import {toast} from 'react-toastify';
 
 export const signUp =(data)=>{
     
@@ -23,7 +24,7 @@ export const signUp =(data)=>{
             dispatch({ type: actions.AUTH_SUCCESS });
         } catch (error) {
             dispatch({ type: actions.AUTH_FAIL, payload: error.message });
-            
+            toast.error(error.message);
         }
         dispatch({ type: actions.AUTH_END });
         
@@ -55,7 +56,7 @@ export const editProfile =(data)=>{
             dispatch({ type: actions.AUTH_SUCCESS });
         } catch (error) {
             dispatch({ type: actions.AUTH_FAIL, payload: error.message });
-            
+            toast.error(error.message);
         }
         dispatch({ type: actions.AUTH_END });
         
@@ -76,7 +77,7 @@ export const signOut =()=>{
             history.push('/');
         } catch (error) {
             dispatch({ type: actions.AUTH_FAIL, payload: error.message });
-            
+            toast.error(error.message);
         }
         dispatch({ type: actions.AUTH_END });
         
@@ -92,10 +93,11 @@ export const login =(data)=>{
             .signInWithEmailAndPassword(data.email, data.password);
 
             dispatch({ type: actions.AUTH_SUCCESS });
+            
             history.push('/');
         } catch (error) {
             dispatch({ type: actions.AUTH_FAIL, payload: error.message });
-            
+            toast.error(error.message);
         }
         dispatch({ type: actions.AUTH_END });
         

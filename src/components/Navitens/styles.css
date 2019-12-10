@@ -1,4 +1,13 @@
-ul{
+.ul-menu{
     display: flex;
     flex-direction: row;
+}
+
+@media (max-width: 600px){
+    
+    .ul-menu{
+        flex-direction: column;
+        padding-inline-start: 0px;
+        margin-left: 10px;
+    }
 }

@@ -1,0 +1,27 @@
+.content-list{
+    position: absolute;
+    justify-content: flex-start;
+    height: calc(100% - 80px) ;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.color-title{
+    color: #433A58;
+    font-weight: bold;
+}
+
+.button-add{
+    width: 200px;
+}
+
+.add-icons{
+    height: 30px;
+    width: 30px;
+}
+.children-button{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}

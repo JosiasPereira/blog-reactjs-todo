@@ -8,11 +8,11 @@ export default class Button extends Component {
     return (
         <>
             <button 
-              className={loading ? 'button-loading':''} 
+              className={'button'+ (loading ? ' button-loading':'')} 
               {...props}
               disabled={loading}
             >
-                <div ></div>
+                
                 {children}
             </button>
         </>

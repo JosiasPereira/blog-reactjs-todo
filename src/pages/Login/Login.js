@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Formik, Field, Form } from 'formik';
-
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import { Container } from './styles.css';
@@ -29,7 +27,7 @@ class Login extends Component {
   handleSubmit = async (values, formikHelpers)=> {
   
     await this.props.login(values);
-    console.log(values)
+    
   
   }
 
@@ -59,6 +57,7 @@ class Login extends Component {
                 placeholder="Digite seu email..."
                 name="email"              
                 component={Input} 
+                
                 autoComplete="off"          
               >
               </Field>

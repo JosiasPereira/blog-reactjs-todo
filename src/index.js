@@ -10,6 +10,8 @@ import { BrowserRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { isLoaded } from 'react-redux-firebase'
 import Loading from './components/Loading';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AuthIsLoaded({ children }) {
     const auth = useSelector(state => state.firebase.auth)
@@ -17,6 +19,9 @@ function AuthIsLoaded({ children }) {
     return children
   }
 
+toast.configure({
+    autoClose:4000
+});
 ReactDOM.render(
     <Provider store={store}>
         <ReactReduxFirebaseProvider {...rrfProps}>
