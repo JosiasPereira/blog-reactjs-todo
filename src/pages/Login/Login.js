@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { connect } from 'react-redux';
-
+import history from '../../history';
 import { Container } from './styles.css';
 
 import Input from '../../components/Input';
@@ -26,7 +26,8 @@ class Login extends Component {
 
   handleSubmit = async (values, formikHelpers)=> {
   
-    await this.props.login(values);
+    const login = await this.props.login(values);
+    
     
   
   }
@@ -43,8 +44,8 @@ class Login extends Component {
         <Formik  
             onSubmit={this.handleSubmit}
             initialValues={{            
-              email: '',
-              password: '',              
+              email: 'contato@josiaspereira.com.br',
+              password: '11111111',              
             }}
             validationSchema={LoginSchema}          
           >          
@@ -57,7 +58,7 @@ class Login extends Component {
                 placeholder="Digite seu email..."
                 name="email"              
                 component={Input} 
-                
+                type="email"
                 autoComplete="off"          
               >
               </Field>

@@ -16,7 +16,7 @@ export const Navitens = ({clicked,loggedIn}) =>{
                     Sair
                 </Navitem>
                 <Navitem clicked={clicked} link="/todos">
-                    To do
+                    Todos
                 </Navitem>
                 <Navitem clicked={clicked} link="/profile">
                     Perfil

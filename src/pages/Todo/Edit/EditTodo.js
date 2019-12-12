@@ -17,11 +17,15 @@ const TodoSchema = Yup.object().shape({
       .min(4, 'Muito curto'),
   });
 
-class CreateTodo extends Component {
+class Edit extends Component {
     
     handleSubmit = async (values, {resetForm})=> {
   
-      const result = await this.props.addTodo(values);
+      const data={
+          id : this.props.todo.id,
+          todo : values.todo
+      }
+      const result = await this.props.updateTodo(data);
       
       if (result){
         resetForm();
@@ -35,11 +39,6 @@ class CreateTodo extends Component {
       this.props.close();      
     }
     
-    handleChange = name => event => {
-      this.setState({[name]: event.target.value})
-      
-    };
-
     
       render() {
         const {loading, opened, close} = this.props;
@@ -48,13 +47,13 @@ class CreateTodo extends Component {
             <Formik  
                 onSubmit={this.handleSubmit}
                 initialValues={{            
-                  todo: '',                          
+                  todo: this.props.todo.todo,                          
                 }}
                 validationSchema={TodoSchema}          
               >          
               <div className="form-wrapper-modal">
                 <div className="form-title">
-                  NOVO TO DO
+                  EDITAR TODO
                 </div>
                 <Form>              
                                     
@@ -63,7 +62,7 @@ class CreateTodo extends Component {
                     type="text"
                     name="todo"
                     component={Input}   
-                                   
+                    
                   >
                   </Field>
                   <div className="container-button">
@@ -100,11 +99,11 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  addTodo : actions.addTodo,
+  updateTodo : actions.updateTodo,
   listTodos : actions.listTodo
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreateTodo);
+)(Edit);

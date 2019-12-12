@@ -11,7 +11,9 @@ body {
   
 }
 
-
+#root{
+  height: calc(100vh - 80px);
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -77,4 +79,21 @@ form{
     height: calc(100vh - 80px);
     border-radius: 0px;
   }
+}
+@media (max-height:600px){
+  .form-wrapper{ 
+    padding: 40px 20px;
+    height: calc(100vh - 80px);
+    border-radius: 0px;
+  }
+
+  .form-wrapper-modal{
+    padding: 40px 20px;
+    height: calc(100vh - 80px);
+    border-radius: 0px;
+  }
+}
+
+.text-italic{
+  font-style: italic;
 }

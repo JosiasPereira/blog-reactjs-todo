@@ -74,7 +74,7 @@ export const signOut =()=>{
             .signOut();
 
             dispatch({ type: actions.AUTH_SUCCESS });
-            history.push('/');
+            history.push('/login');
         } catch (error) {
             dispatch({ type: actions.AUTH_FAIL, payload: error.message });
             toast.error(error.message);
@@ -93,13 +93,15 @@ export const login =(data)=>{
             .signInWithEmailAndPassword(data.email, data.password);
 
             dispatch({ type: actions.AUTH_SUCCESS });
-            
-            history.push('/');
+                  
+            if (response.user.uid)
+                history.push('/noasdf')
         } catch (error) {
             dispatch({ type: actions.AUTH_FAIL, payload: error.message });
             toast.error(error.message);
         }
         dispatch({ type: actions.AUTH_END });
+        
         
     };
 }

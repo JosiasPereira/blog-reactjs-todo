@@ -10,12 +10,12 @@ import Navbar from '../Navbar';
 const Layout = ( {children})=>{
   
     return (
-        <>
+        <div className="main">
           <Navbar/>
           <main className="main-wrapper">
             {children}
           </main>
-        </>
+        </div>
     )
   
 };

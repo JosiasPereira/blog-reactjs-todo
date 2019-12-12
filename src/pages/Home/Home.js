@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
-import Button from '../../components/Button';
-import { Container } from './styles.css';
 
 class Home extends Component {
 

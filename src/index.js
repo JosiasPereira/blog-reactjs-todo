@@ -13,6 +13,7 @@ import Loading from './components/Loading';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
 function AuthIsLoaded({ children }) {
     const auth = useSelector(state => state.firebase.auth)
     if (!isLoaded(auth)) return <Loading/>;
@@ -26,8 +27,10 @@ ReactDOM.render(
     <Provider store={store}>
         <ReactReduxFirebaseProvider {...rrfProps}>
             <BrowserRouter>
-                <AuthIsLoaded>                    
+                <AuthIsLoaded>  
+                    
                     <App/>
+                    
                     
                 </AuthIsLoaded>
             </BrowserRouter>

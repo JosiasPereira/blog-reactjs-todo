@@ -66,7 +66,8 @@ class Profile extends Component {
                   </Field>
                   <Field
                   placeholder="Digite seu email..."                
-                  name="email"                                
+                  name="email"   
+                  type="email"                             
                   component={Input}           
                   >
                   </Field>

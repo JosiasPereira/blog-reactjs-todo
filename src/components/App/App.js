@@ -7,12 +7,11 @@ import Login from '../../pages/Login';
 import SignUp from '../../pages/SignUp';
 import LogOut from '../../pages/LogOut';
 import Profile from '../../pages/Profile';
-import CreateTodo from '../../pages/Todo/Create';
 import ListTodo from '../../pages/Todo/List';
+import history from '../../history';
 
 const App = ({loggedIn}) =>{
   let routes;
-
   
   const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
@@ -54,12 +53,14 @@ const App = ({loggedIn}) =>{
 
   routes=(
     <Switch>
-      <Route path="/login" component={Login}  />
-      <Route exact path="/" component={Home}  />              
+      <Route exact path="/" component={Home}  />
+      <Route path="/login" component={Login}  />                    
       <Route exact path="/signup" component={SignUp}  />  
       <PrivateRoute exact path="/logout" component={LogOut}  /> 
       <PrivateRoute exact path="/profile" component={Profile}  /> 
-      <PrivateRoute path="/todos" component={ListTodo}  />      
+      <PrivateRoute path="/todos" component={ListTodo}  />  
+      <Route exact path="/notFound" component={()=><h1>A página que você tentou acessar não existe!</h1>} />  
+      <Redirect to="/notFound"  />   
     </Switch>
   )
 
