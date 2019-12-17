@@ -6,12 +6,13 @@ import store from './store';
 import {rrfProps } from './store';
 import { Provider } from 'react-redux';
 import {ReactReduxFirebaseProvider} from 'react-redux-firebase'
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { isLoaded } from 'react-redux-firebase'
 import Loading from './components/Loading';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import history from './history'
 
 
 function AuthIsLoaded({ children }) {
@@ -26,14 +27,14 @@ toast.configure({
 ReactDOM.render(
     <Provider store={store}>
         <ReactReduxFirebaseProvider {...rrfProps}>
-            <BrowserRouter>
+            <Router history={history}>
                 <AuthIsLoaded>  
                     
                     <App/>
                     
                     
                 </AuthIsLoaded>
-            </BrowserRouter>
+            </Router>
         </ReactReduxFirebaseProvider>
         
         

@@ -95,7 +95,7 @@ export const login =(data)=>{
             dispatch({ type: actions.AUTH_SUCCESS });
                   
             if (response.user.uid)
-                history.push('/noasdf')
+                history.push('/todos')
         } catch (error) {
             dispatch({ type: actions.AUTH_FAIL, payload: error.message });
             toast.error(error.message);

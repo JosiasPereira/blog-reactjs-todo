@@ -52,6 +52,7 @@ const App = ({loggedIn}) =>{
   */
 
   routes=(
+  
     <Switch>
       <Route exact path="/" component={Home}  />
       <Route path="/login" component={Login}  />                    
